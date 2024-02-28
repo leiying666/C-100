@@ -1,0 +1,68 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<string.h>
+#include<errno.h>
+#include<windows.h>
+#include<stdlib.h>
+#include<math.h>
+#include<stdio.h>
+typedef struct S
+{
+	int y;
+	int m;
+	int d;
+}S;
+
+int Is_run(int a)
+{
+	if ((a % 4 == 0 && a % 100 != 0) || a % 400 == 0)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int main()
+{
+	S s;
+	scanf("%d%d%d", &s.y, &s.m, &s.d);
+	int i = 0, h = 0, a = 31, b = 30;
+	if (Is_run(s.y))
+	{
+		for (i = 1; i < s.m; i++)
+		{
+			if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || 1 == 12)
+			{
+				h += a;
+			}
+			else if (i == 4 || i == 6 || i == 9 || i == 11)
+			{
+				h += b;
+			}
+			else
+			{
+				h += 29;
+			}
+		}
+		printf("%d\n", h + s.d);
+	}
+	else
+	{
+		for (i = 1; i < s.m; i++)
+		{
+			if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || 1 == 12)
+			{
+				h += a;
+			}
+			else if (i == 4 || i == 6 || i == 9 || i == 11)
+			{
+				h += b;
+			}
+			else
+			{
+				h += 28;
+			}
+		}
+		printf("%d\n", h + s.d);
+	}
+	return 0;
+}
